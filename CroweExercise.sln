@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crowe.Exercise.Model", "Cro
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crowe.Exercise.Api", "Crowe.Exercise.Api\Crowe.Exercise.Api.csproj", "{ED7C86FF-F7E2-4136-9E80-A0916A7FF89E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crowe.Exercise.Business", "Crowe.Exercise.Business\Crowe.Exercise.Business.csproj", "{90B08F94-C6AE-4F70-9371-C53E5EA6CB18}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{ED7C86FF-F7E2-4136-9E80-A0916A7FF89E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED7C86FF-F7E2-4136-9E80-A0916A7FF89E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED7C86FF-F7E2-4136-9E80-A0916A7FF89E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90B08F94-C6AE-4F70-9371-C53E5EA6CB18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90B08F94-C6AE-4F70-9371-C53E5EA6CB18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90B08F94-C6AE-4F70-9371-C53E5EA6CB18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90B08F94-C6AE-4F70-9371-C53E5EA6CB18}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
