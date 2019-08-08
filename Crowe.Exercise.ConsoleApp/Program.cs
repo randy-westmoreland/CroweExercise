@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Crowe.Exercise.Common;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.IO;
 using System.Net.Http;
@@ -10,6 +11,9 @@ namespace Crowe.Exercise.ConsoleApp
     /// </summary>
     public static class Program
     {
+        /// <summary>
+        /// Defines the entry point of the application.
+        /// </summary>
         public static void Main()
         {
             ConfigureBuilder(out IConfigurationRoot configuration);
@@ -27,9 +31,11 @@ namespace Crowe.Exercise.ConsoleApp
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+                .AddJsonFile(Constants.APPSETTINGS, optional: true, reloadOnChange: true);
 
             configuration = builder.Build();
+
+            //configuration.GetSection("").Bind()
         }
 
         /// <summary>
