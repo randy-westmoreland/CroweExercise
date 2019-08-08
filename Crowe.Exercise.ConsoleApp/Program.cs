@@ -1,42 +1,49 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
 using System.IO;
 using System.Net.Http;
 
 namespace Crowe.Exercise.ConsoleApp
 {
-    public class Program
+    /// <summary>
+    /// Program Class.
+    /// </summary>
+    public static class Program
     {
-        public static void Main(string[] args)
+        public static void Main()
         {
-            //Console.WriteLine("Hello World!");
-            //var collection = new ServiceCollection();
-            //collection.AddHttpClient()
-            //var serviceProvider = collection.BuildServiceProvider();
+            ConfigureBuilder(out IConfigurationRoot configuration);
+            ConfigureServices(out HttpClient client);
 
-            //serviceProvider.add
+            configuration.GetSection("");
+            client.GetAsync("");
+        }
 
+        /// <summary>
+        /// Configures the builder.
+        /// </summary>
+        /// <param name="configuration">The configuration.</param>
+        private static void ConfigureBuilder(out IConfigurationRoot configuration)
+        {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
 
-            var configuration = builder.Build();
+            configuration = builder.Build();
+        }
 
-            Console.WriteLine(configuration.GetConnectionString("Storage"));
-
+        /// <summary>
+        /// Configures the services.
+        /// </summary>
+        /// <param name="client">The client.</param>
+        private static void ConfigureServices(out HttpClient client)
+        {
             var serviceProvider = new ServiceCollection()
                 .AddHttpClient()
                 .BuildServiceProvider();
 
             var httpClientFactory = serviceProvider.GetService<IHttpClientFactory>();
-
-            var client = httpClientFactory.CreateClient();
-
-            //client.GetAsync()
-
+            client = httpClientFactory.CreateClient();
         }
     }
 }
