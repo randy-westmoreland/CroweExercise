@@ -8,6 +8,11 @@
         /// <summary>
         /// The appsettings
         /// </summary>
-        public const string APPSETTINGS = "appsettings.json";
+        public const string APPSETTINGS                 = "appsettings.json";
+
+        /// <summary>
+        /// The crowe exercise settings
+        /// </summary>
+        public const string CROWE_EXERCISE_SETTINGS     = "CroweExerciseSettings";
     }
 }
