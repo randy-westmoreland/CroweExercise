@@ -26,4 +26,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Crowe.Exercise.Model\Crowe.Exercise.Model.csproj" />
+  </ItemGroup>
+
 </Project>
