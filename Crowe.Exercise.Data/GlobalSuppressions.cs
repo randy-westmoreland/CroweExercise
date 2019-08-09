@@ -11,4 +11,5 @@
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("General", "RCS1079:Throwing of new NotImplementedException.", Justification = "<Pending>", Scope = "member", Target = "~M:Crowe.Exercise.Data.Repositories.MessageRepository.GetEntity(System.String)~Crowe.Exercise.Data.Entities.MessageEntity")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("General", "RCS1079:Throwing of new NotImplementedException.", Justification = "<Pending>", Scope = "member", Target = "~M:Crowe.Exercise.Data.Repositories.MessageRepository.Update(Crowe.Exercise.Data.Entities.MessageEntity)~System.Int32")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Documentation", "CA1200:Avoid using cref tags with a prefix", Justification = "<Pending>", Scope = "member", Target = "~M:Crowe.Exercise.Data.CroweExerciseContextFactory.Create~Crowe.Exercise.Data.CroweExerciseDbContext")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("General", "RCS1079:Throwing of new NotImplementedException.", Justification = "<Pending>", Scope = "member", Target = "~M:Crowe.Exercise.Data.CroweExerciseDbContext.SetModified(System.Object)")]
 

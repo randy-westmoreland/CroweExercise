@@ -6,4 +6,6 @@
 
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores", Justification = "<Pending>", Scope = "member", Target = "~F:Crowe.Exercise.Common.Constants.CROWE_EXERCISE_SETTINGS")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores", Justification = "<Pending>", Scope = "member", Target = "~F:Crowe.Exercise.Common.Constants.CROWE_EXERCISE_BUSINESS_ASSEMBLY")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores", Justification = "<Pending>", Scope = "member", Target = "~F:Crowe.Exercise.Common.Constants.CONNECTION_STRING")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Naming", "CA1707:Identifiers should not contain underscores", Justification = "<Pending>", Scope = "member", Target = "~F:Crowe.Exercise.Common.Constants.CROWE_EXERCISE_DATA_ASSEMBLY")]
 
