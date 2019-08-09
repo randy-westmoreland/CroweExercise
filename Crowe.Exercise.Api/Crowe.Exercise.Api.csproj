@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="2.9.4">
@@ -24,9 +25,16 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Scrutor" Version="3.1.0" />
+    <PackageReference Include="Text.Analyzers" Version="2.6.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Crowe.Exercise.Business\Crowe.Exercise.Business.csproj" />
+    <ProjectReference Include="..\Crowe.Exercise.Common\Crowe.Exercise.Common.csproj" />
     <ProjectReference Include="..\Crowe.Exercise.Model\Crowe.Exercise.Model.csproj" />
   </ItemGroup>
 

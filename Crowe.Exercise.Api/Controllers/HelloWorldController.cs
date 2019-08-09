@@ -1,45 +1,45 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using AutoMapper;
+using Crowe.Exercise.Api.Contracts;
+using Crowe.Exercise.Business.Contracts;
+using Crowe.Exercise.Model.Api;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Crowe.Exercise.Api.Controllers
 {
+    /// <summary>
+    /// HelloWorldController Class.
+    /// </summary>
+    /// <seealso cref="ControllerBase" />
+    /// <seealso cref="IHelloWorldController" />
     [Route("api/[controller]")]
     [ApiController]
-    public class ValuesController : ControllerBase
+    public class HelloWorldController : ControllerBase, IHelloWorldController
     {
-        // GET api/values
-        [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        private readonly IMapper _mapper;
+        private readonly IHelloWorldManager _helloWorldManager;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="HelloWorldController"/> class.
+        /// </summary>
+        /// <param name="mapper">The mapper.</param>
+        /// <param name="helloWorldManager">The hello world manager.</param>
+        public HelloWorldController(IMapper mapper, IHelloWorldManager helloWorldManager)
         {
-            return new string[] { "value1", "value2" };
+            _mapper = mapper;
+            _helloWorldManager = helloWorldManager;
         }
 
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        /// <summary>
+        /// Gets the message.
+        /// </summary>
+        /// <returns>
+        /// MessageApiModel
+        /// </returns>
+        [HttpGet("[action]")]
+        public MessageApiModel Message()
         {
-            return "value";
-        }
-
-        // POST api/values
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            var message = _helloWorldManager.GetMessage();
+            return _mapper.Map<MessageApiModel>(message);
         }
     }
 }
