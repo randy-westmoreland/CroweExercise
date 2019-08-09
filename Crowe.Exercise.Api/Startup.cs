@@ -40,7 +40,7 @@ namespace Crowe.Exercise.Api
         {
             services.Configure<AppSettingsConfig>(Configuration.GetSection(Constants.CROWE_EXERCISE_SETTINGS));
             services.AddAutoMapper(typeof(AutoMapperConfig));
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);          
 
             DependencyConfig.ConfigureServices(services, Configuration);
         }
