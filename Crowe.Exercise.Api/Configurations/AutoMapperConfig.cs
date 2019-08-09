@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Crowe.Exercise.Data.Entities;
 using Crowe.Exercise.Model.Api;
 using Crowe.Exercise.Model.Domain;
 using Crowe.Exercise.Model.View;
@@ -22,6 +23,11 @@ namespace Crowe.Exercise.Api.Configurations
                 .ForAllOtherMembers(opts => opts.Ignore());
 
             CreateMap<MessageDomainModel, MessageApiModel>();
+
+            CreateMap<MessageDomainModel, MessageEntity>()
+                .ForMember(dest => dest.Message,
+                           opts => opts.MapFrom(src => src.Message))
+                .ForAllOtherMembers(opts => opts.Ignore());
         }
     }
 }
