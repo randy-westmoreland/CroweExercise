@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Crowe.Exercise.Business.Contracts;
+using Crowe.Exercise.Data.Entities;
 using Crowe.Exercise.Model.Domain;
 using Crowe.Exercise.Model.View;
 using Microsoft.Extensions.Options;
@@ -35,6 +36,11 @@ namespace Crowe.Exercise.Business.Managers
         public MessageDomainModel GetMessage()
         {
             return _mapper.Map<MessageDomainModel>(_appSettings.Value);
+        }
+
+        public int AddMessage(MessageEntity entity)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
