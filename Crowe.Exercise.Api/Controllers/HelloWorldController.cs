@@ -41,5 +41,21 @@ namespace Crowe.Exercise.Api.Controllers
             var message = _helloWorldManager.GetMessage();
             return _mapper.Map<MessageApiModel>(message);
         }
+
+        /// <summary>
+        /// Messages the specified message.
+        /// </summary>
+        /// <param name="message">The message.</param>
+        /// <returns>
+        /// IActionResult
+        /// </returns>
+        /// <exception cref="System.NotImplementedException"></exception>
+        [HttpPost("[action]")]
+        //[Route("api/HelloWorld/PostMessage")]
+        public IActionResult Foobar([FromBody] MessageApiModel message)
+        //public void test()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

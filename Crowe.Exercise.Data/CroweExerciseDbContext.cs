@@ -11,7 +11,7 @@ namespace Crowe.Exercise.Data
     /// </summary>
     /// <seealso cref="DbContext" />
     /// <seealso cref="IDbContext" />
-    public class CroweExerciseDbContext : DbContext, IDbContext
+    public class CroweExerciseDbContext : DbContext//, IDbContext
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="CroweExerciseDbContext"/> class.

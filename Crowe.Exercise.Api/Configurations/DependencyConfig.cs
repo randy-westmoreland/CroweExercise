@@ -1,5 +1,7 @@
 ﻿using Crowe.Exercise.Common;
 using Crowe.Exercise.Data;
+using Crowe.Exercise.Data.Contracts;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -35,6 +37,9 @@ namespace Crowe.Exercise.Api.Configurations
                 .AsImplementedInterfaces()
                 .WithTransientLifetime());
 
+            //services.AddScoped<IDbContext, CroweExerciseDbContext>();
+            //services.AddDbContext<CroweExerciseDbContext>(options =>
+            //    options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped(_ => new CroweExerciseDbContext(configuration.GetConnectionString(Constants.CONNECTION_STRING)));
 
             services.AddSingleton(configuration);

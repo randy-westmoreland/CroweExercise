@@ -1,5 +1,4 @@
-﻿using Crowe.Exercise.Data.Entities;
-using Crowe.Exercise.Model.Domain;
+﻿using Crowe.Exercise.Model.Domain;
 
 namespace Crowe.Exercise.Business.Contracts
 {
@@ -17,8 +16,10 @@ namespace Crowe.Exercise.Business.Contracts
         /// <summary>
         /// Adds the message.
         /// </summary>
-        /// <param name="entity">The entity.</param>
-        /// <returns></returns>
-        int AddMessage(MessageEntity entity);
+        /// <param name="message">The message.</param>
+        /// <returns>
+        /// int
+        /// </returns>
+        int AddMessage(MessageDomainModel message);
     }
 }

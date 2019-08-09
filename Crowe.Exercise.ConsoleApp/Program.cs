@@ -2,12 +2,14 @@
 using Crowe.Exercise.Common.Utils;
 using Crowe.Exercise.Model.Api;
 using Crowe.Exercise.Model.View;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using System;
 using System.IO;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Crowe.Exercise.ConsoleApp
@@ -25,11 +27,13 @@ namespace Crowe.Exercise.ConsoleApp
             ConfigureBuilder(out AppSettingsConfig appSettings);
             ConfigureServices(out HttpClient client);
 
-            Console.WriteLine(GetMessage(appSettings, client)
-                .ConfigureAwait(false)
-                .GetAwaiter()
-                .GetResult()
-                .Message);
+            //Console.WriteLine(GetMessage(appSettings, client)
+            //    .ConfigureAwait(false)
+            //    .GetAwaiter()
+            //    .GetResult()
+            //    .Message);
+
+            PostMessage(appSettings, client).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -71,6 +75,24 @@ namespace Crowe.Exercise.ConsoleApp
             response.Dispose();
 
             return JsonConvert.DeserializeObject<MessageApiModel>(result);
+        }
+
+        private static async Task PostMessage(AppSettingsConfig appSettings, HttpClient client)
+        {
+            var json = JsonConvert.SerializeObject(new MessageApiModel { Message = "Hello World!" });
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+
+            //var stringContent = new StringContent(json, UnicodeEncoding.UTF8, "application/json");
+
+            //var client = new HttpClient();
+            //var response = await client.PostAsync(uri, stringContent);
+
+
+            var endpoint = AppSettings.Get<Uri>(appSettings.GetMessageEndpoint);
+            var response = await client.PostAsync(endpoint, content).ConfigureAwait(false);
+
+            content.Dispose();
         }
     }
 }

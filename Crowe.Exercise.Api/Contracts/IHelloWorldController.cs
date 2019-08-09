@@ -1,5 +1,5 @@
 ﻿using Crowe.Exercise.Model.Api;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Crowe.Exercise.Api.Contracts
 {
@@ -13,5 +13,12 @@ namespace Crowe.Exercise.Api.Contracts
         /// </summary>
         /// <returns>MessageApiModel</returns>
         MessageApiModel Message();
+
+        /// <summary>
+        /// Messages the specified message.
+        /// </summary>
+        /// <param name="message">The message.</param>
+        /// <returns>IActionResult</returns>
+        IActionResult Foobar(MessageApiModel message);
     }
 }

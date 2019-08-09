@@ -11,15 +11,15 @@ namespace Crowe.Exercise.Data.Repositories
     /// <seealso cref="IMessageRepository" />
     public class MessageRepository : IMessageRepository
     {
-        private IDbContext _context;
+        private CroweExerciseDbContext _context;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MessageRepository"/> class.
         /// </summary>
         /// <param name="content">The content.</param>
-        public MessageRepository(IDbContext content)
+        public MessageRepository(CroweExerciseDbContext context)
         {
-            _context = content;
+            _context = context;
         }
 
         /// <summary>

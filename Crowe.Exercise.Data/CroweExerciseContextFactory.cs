@@ -1,4 +1,5 @@
-﻿using System.Data.Entity.Infrastructure;
+﻿using System.Configuration;
+using System.Data.Entity.Infrastructure;
 
 namespace Crowe.Exercise.Data
 {
@@ -14,6 +15,6 @@ namespace Crowe.Exercise.Data
         /// <returns>
         /// An instance of TContext
         /// </returns>
-        public CroweExerciseDbContext Create() => new CroweExerciseDbContext("[connectionString]");
+        public CroweExerciseDbContext Create() => new CroweExerciseDbContext("");
     }
 }

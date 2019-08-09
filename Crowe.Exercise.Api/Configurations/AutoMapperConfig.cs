@@ -22,7 +22,7 @@ namespace Crowe.Exercise.Api.Configurations
                            opts => opts.MapFrom(src => src.MessageToSend))
                 .ForAllOtherMembers(opts => opts.Ignore());
 
-            CreateMap<MessageDomainModel, MessageApiModel>();
+            CreateMap<MessageDomainModel, MessageApiModel>().ReverseMap();
 
             CreateMap<MessageDomainModel, MessageEntity>()
                 .ForMember(dest => dest.Message,
