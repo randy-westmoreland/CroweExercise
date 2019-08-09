@@ -19,5 +19,15 @@
         /// The crowe exercise business assembly
         /// </summary>
         public const string CROWE_EXERCISE_BUSINESS_ASSEMBLY    = "Crowe.Exercise.Business";
+
+        /// <summary>
+        /// The crowe exercise data assembly
+        /// </summary>
+        public const string CROWE_EXERCISE_DATA_ASSEMBLY        = "Crowe.Exercise.Data";
+
+        /// <summary>
+        /// The connection string
+        /// </summary>
+        public const string CONNECTION_STRING                   = "DefaultConnection";
     }
 }
