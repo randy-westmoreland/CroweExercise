@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Linq;
 
 namespace Crowe.Exercise.Data.Contracts
 {
@@ -13,35 +13,35 @@ namespace Crowe.Exercise.Data.Contracts
         /// <summary>
         /// Gets all.
         /// </summary>
-        /// <returns></returns>
-        IList<TSource> GetAll();
+        /// <returns>IQueryable<TSource></returns>
+        IQueryable<TSource> GetAll();
 
         /// <summary>
         /// Gets the entity.
         /// </summary>
         /// <param name="key">The key.</param>
-        /// <returns></returns>
+        /// <returns>TSource</returns>
         TSource GetEntity(string key);
 
         /// <summary>
         /// Adds the specified entity.
         /// </summary>
         /// <param name="entity">The entity.</param>
-        /// <returns></returns>
+        /// <returns>int</returns>
         int Add(TSource entity);
 
         /// <summary>
         /// Updates the specified entity.
         /// </summary>
         /// <param name="entity">The entity.</param>
-        /// <returns></returns>
+        /// <returns>int</returns>
         int Update(TSource entity);
 
         /// <summary>
         /// Deletes the specified entity.
         /// </summary>
         /// <param name="entity">The entity.</param>
-        /// <returns></returns>
+        /// <returns>int</returns>
         int Delete(TSource entity);
     }
 }

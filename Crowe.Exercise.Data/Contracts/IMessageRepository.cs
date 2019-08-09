@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Crowe.Exercise.Data.Entities;
 
 namespace Crowe.Exercise.Data.Contracts
 {
-    public interface IMessageRepository
+    public interface IMessageRepository : IObjectRepository<MessageEntity>
     {
+        // Custom Repository methods specific to MessageRepository.
     }
 }
