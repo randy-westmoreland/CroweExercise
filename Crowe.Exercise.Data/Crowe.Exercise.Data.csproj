@@ -54,12 +54,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Config\CroweExerciseMessagesConfig.cs" />
     <Compile Include="Contracts\IDbContext.cs" />
     <Compile Include="Contracts\IEntity.cs" />
+    <Compile Include="Contracts\IMessageRepository.cs" />
+    <Compile Include="Contracts\IObjectRepository.cs" />
+    <Compile Include="CroweExerciseContextFactory.cs" />
     <Compile Include="CroweExerciseDbContext.cs" />
     <Compile Include="Entities\MessageEntity.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\MessageRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
