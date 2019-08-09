@@ -30,6 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Crowe.Exercise.Data\Crowe.Exercise.Data.csproj" />
     <ProjectReference Include="..\Crowe.Exercise.Model\Crowe.Exercise.Model.csproj" />
   </ItemGroup>
 
