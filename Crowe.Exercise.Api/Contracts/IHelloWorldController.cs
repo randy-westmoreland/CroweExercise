@@ -12,13 +12,13 @@ namespace Crowe.Exercise.Api.Contracts
         /// Gets the message.
         /// </summary>
         /// <returns>MessageApiModel</returns>
-        MessageApiModel Message();
+        IActionResult Message();
 
         /// <summary>
         /// Messages the specified message.
         /// </summary>
         /// <param name="message">The message.</param>
         /// <returns>IActionResult</returns>
-        IActionResult Foobar(MessageApiModel message);
+        IActionResult Message(MessageApiModel message);
     }
 }

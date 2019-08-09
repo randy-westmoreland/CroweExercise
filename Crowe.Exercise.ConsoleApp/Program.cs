@@ -2,15 +2,14 @@
 using Crowe.Exercise.Common.Utils;
 using Crowe.Exercise.Model.Api;
 using Crowe.Exercise.Model.View;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using System;
 using System.IO;
+using System.Net;
 using System.Net.Http;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Crowe.Exercise.ConsoleApp
 {
@@ -27,13 +26,13 @@ namespace Crowe.Exercise.ConsoleApp
             ConfigureBuilder(out AppSettingsConfig appSettings);
             ConfigureServices(out HttpClient client);
 
-            //Console.WriteLine(GetMessage(appSettings, client)
-            //    .ConfigureAwait(false)
-            //    .GetAwaiter()
-            //    .GetResult()
-            //    .Message);
-
-            PostMessage(appSettings, client).ConfigureAwait(false);
+            if (AppSettings.Get<bool>(appSettings.WriteToConsole))
+            {
+                Console.WriteLine(GetMessage(appSettings, client).Message);
+            } else
+            {
+                Console.WriteLine($"Response :: { PostMessage(appSettings, client) } ");
+            }
         }
 
         /// <summary>
@@ -66,10 +65,16 @@ namespace Crowe.Exercise.ConsoleApp
             client = httpClientFactory.CreateClient();
         }
 
-        private static async Task<MessageApiModel> GetMessage(AppSettingsConfig appSettings, HttpClient client)
+        /// <summary>
+        /// Gets the message.
+        /// </summary>
+        /// <param name="appSettings">The application settings.</param>
+        /// <param name="client">The client.</param>
+        /// <returns></returns>
+        private static MessageApiModel GetMessage(AppSettingsConfig appSettings, HttpClient client)
         {
             var endpoint = AppSettings.Get<Uri>(appSettings.GetMessageEndpoint);
-            var response = await client.GetAsync(endpoint).ConfigureAwait(false);
+            var response = client.GetAsync(endpoint).Result;
             var result = response.Content.ReadAsStringAsync().Result;
 
             response.Dispose();
@@ -77,22 +82,22 @@ namespace Crowe.Exercise.ConsoleApp
             return JsonConvert.DeserializeObject<MessageApiModel>(result);
         }
 
-        private static async Task PostMessage(AppSettingsConfig appSettings, HttpClient client)
+        /// <summary>
+        /// Posts the message.
+        /// </summary>
+        /// <param name="appSettings">The application settings.</param>
+        /// <param name="client">The client.</param>
+        /// <returns>HttpStatusCode</returns>
+        private static HttpStatusCode PostMessage(AppSettingsConfig appSettings, HttpClient client)
         {
-            var json = JsonConvert.SerializeObject(new MessageApiModel { Message = "Hello World!" });
+            var json = JsonConvert.SerializeObject(new MessageApiModel { Message = appSettings.MessageToSend });
             var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-
-            //var stringContent = new StringContent(json, UnicodeEncoding.UTF8, "application/json");
-
-            //var client = new HttpClient();
-            //var response = await client.PostAsync(uri, stringContent);
-
-
             var endpoint = AppSettings.Get<Uri>(appSettings.GetMessageEndpoint);
-            var response = await client.PostAsync(endpoint, content).ConfigureAwait(false);
+            var response = client.PostAsync(endpoint, content).Result;
 
             content.Dispose();
+
+            return response.StatusCode;
         }
     }
 }

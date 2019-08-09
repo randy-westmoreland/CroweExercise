@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using Crowe.Exercise.Business.Contracts;
 using Crowe.Exercise.Data.Contracts;
+using Crowe.Exercise.Data.Entities;
 using Crowe.Exercise.Model.Domain;
 using Crowe.Exercise.Model.View;
 using Microsoft.Extensions.Options;
+using System;
 
 namespace Crowe.Exercise.Business.Managers
 {
@@ -47,8 +49,13 @@ namespace Crowe.Exercise.Business.Managers
         /// <returns>int</returns>
         public int AddMessage(MessageDomainModel message)
         {
-            //return _messageRepository.Add(message);
-            return 0;
+            try
+            {
+                return _messageRepository.Add(_mapper.Map<MessageEntity>(message));
+            } catch (NotImplementedException)
+            {
+                return 0;
+            }
         }
     }
 }

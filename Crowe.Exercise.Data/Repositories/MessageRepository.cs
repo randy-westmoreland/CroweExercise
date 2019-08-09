@@ -14,9 +14,9 @@ namespace Crowe.Exercise.Data.Repositories
         private CroweExerciseDbContext _context;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MessageRepository"/> class.
+        /// Initializes a new instance of the <see cref="MessageRepository" /> class.
         /// </summary>
-        /// <param name="content">The content.</param>
+        /// <param name="context">The context.</param>
         public MessageRepository(CroweExerciseDbContext context)
         {
             _context = context;

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Crowe.Exercise.Model.View
+﻿namespace Crowe.Exercise.Model.View
 {
     /// <summary>
     /// AppSettingsConfig Class.

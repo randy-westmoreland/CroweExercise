@@ -2,6 +2,7 @@
 using Crowe.Exercise.Api.Contracts;
 using Crowe.Exercise.Business.Contracts;
 using Crowe.Exercise.Model.Api;
+using Crowe.Exercise.Model.Domain;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Crowe.Exercise.Api.Controllers
@@ -36,10 +37,10 @@ namespace Crowe.Exercise.Api.Controllers
         /// MessageApiModel
         /// </returns>
         [HttpGet("[action]")]
-        public MessageApiModel Message()
+        public IActionResult Message()
         {
             var message = _helloWorldManager.GetMessage();
-            return _mapper.Map<MessageApiModel>(message);
+            return Ok(_mapper.Map<MessageApiModel>(message));
         }
 
         /// <summary>
@@ -51,11 +52,16 @@ namespace Crowe.Exercise.Api.Controllers
         /// </returns>
         /// <exception cref="System.NotImplementedException"></exception>
         [HttpPost("[action]")]
-        //[Route("api/HelloWorld/PostMessage")]
-        public IActionResult Foobar([FromBody] MessageApiModel message)
-        //public void test()
+        public IActionResult Message([FromBody] MessageApiModel message)
         {
-            throw new System.NotImplementedException();
+            var response = _helloWorldManager.AddMessage(_mapper.Map<MessageDomainModel>(message));
+            if (response == 0)
+            {
+                return BadRequest();
+            } else
+            {
+                return Ok();
+            }
         }
     }
 }
