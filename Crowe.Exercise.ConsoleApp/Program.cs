@@ -1,11 +1,14 @@
 ﻿using Crowe.Exercise.Common;
 using Crowe.Exercise.Common.Utils;
+using Crowe.Exercise.Model.Api;
 using Crowe.Exercise.Model.View;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
 using System;
 using System.IO;
 using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace Crowe.Exercise.ConsoleApp
 {
@@ -22,9 +25,11 @@ namespace Crowe.Exercise.ConsoleApp
             ConfigureBuilder(out AppSettingsConfig appSettings);
             ConfigureServices(out HttpClient client);
 
-            //client.GetAsync("");
-            var foo = AppSettings.Get<bool>(appSettings.WriteToConsole);
-            Console.WriteLine("test :: " + appSettings.WriteToConsole);
+            Console.WriteLine(GetMessage(appSettings, client)
+                .ConfigureAwait(false)
+                .GetAwaiter()
+                .GetResult()
+                .Message);
         }
 
         /// <summary>
@@ -55,6 +60,17 @@ namespace Crowe.Exercise.ConsoleApp
 
             var httpClientFactory = serviceProvider.GetService<IHttpClientFactory>();
             client = httpClientFactory.CreateClient();
+        }
+
+        private static async Task<MessageApiModel> GetMessage(AppSettingsConfig appSettings, HttpClient client)
+        {
+            var endpoint = AppSettings.Get<Uri>(appSettings.GetMessageEndpoint);
+            var response = await client.GetAsync(endpoint).ConfigureAwait(false);
+            var result = response.Content.ReadAsStringAsync().Result;
+
+            response.Dispose();
+
+            return JsonConvert.DeserializeObject<MessageApiModel>(result);
         }
     }
 }
